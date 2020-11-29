@@ -64,6 +64,8 @@ public class Server {
             } catch (Exception ex) {
                 em.getTransaction().rollback();
                 throw ex;
+            } finally {
+                em.close();
             }
         };
         return r;
@@ -79,6 +81,8 @@ public class Server {
             } catch (Exception ex) {
                 em.getTransaction().rollback();
                 throw ex;
+            } finally {
+                em.close();
             }
         };
         return r;
