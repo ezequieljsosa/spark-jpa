@@ -16,10 +16,9 @@ import static spark.Spark.redirect;
 public class AutoController {
 
 
-    public static ModelAndView listaAutos(Request request, Response response) {
+    public static ModelAndView listaAutos(Request request, Response response,EntityManager entityManager) {
 
         //INIT
-        EntityManager entityManager = null;
         RepoAuto repo = new RepoAuto(entityManager);
 
         //INPUT

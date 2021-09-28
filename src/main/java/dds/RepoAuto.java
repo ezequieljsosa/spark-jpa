@@ -51,7 +51,12 @@ public class RepoAuto {
 
 
     public List<Auto> byMarca(String marca) {
-        return null;
+        CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<Auto> consulta = cb.createQuery(Auto.class);
+        Root<Auto> autos = consulta.from(Auto.class);
+        Predicate condicion = cb.equal(autos.get("marca"), marca);
+        CriteriaQuery<Auto> where = consulta.select(autos).where(condicion);
+        return this.entityManager.createQuery(where).getResultList();
     }
 
 

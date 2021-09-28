@@ -46,7 +46,7 @@ public class Server {
 
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
-        get("/auto", AutoController::listaAutos, engine);
+        get("/auto", TemplWithTransaction(AutoController::listaAutos), engine);
         post("/auto", RouteWithTransaction(AutoController::guardarAuto));
         delete("/auto/:patente", RouteWithTransaction(AutoController::borrarAuto));
         get("/auto/:patente", TemplWithTransaction(AutoController::obtenerAuto), engine);
